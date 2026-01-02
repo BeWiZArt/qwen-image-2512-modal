@@ -12,9 +12,17 @@ A clean, minimal Modal script to run ComfyUI with Qwen Image 2512 model for high
 
 ## Quick Start
 
-### 1. Install Modal
+### 1. Install Dependencies
 ```bash
-pip install modal-client
+# Clone the repository
+git clone https://github.com/innovativebran/qwen-image-2512-modal.git
+cd qwen-image-2512-modal
+
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Alternative: Install modal directly
+pip install modal>=1.2.0
 ```
 
 ### 2. Authenticate with Modal
@@ -101,6 +109,24 @@ A fantasy castle in the clouds
 
 ## Troubleshooting
 
+### Installation Issues
+
+**If you get "modal-client is no longer being updated" error:**
+```bash
+pip uninstall modal-client -y
+pip install modal>=1.2.0
+```
+
+**If modal command doesn't work:**
+```bash
+# Try using python module
+python -m modal serve qwen.py
+
+# Or reinstall specific version
+pip uninstall modal -y
+pip install modal==1.2.0
+```
+
 ### If the URL doesn't work:
 1. Wait 2-3 minutes for full startup
 2. Check the Modal dashboard for app status
@@ -116,6 +142,19 @@ A fantasy castle in the clouds
 2. Reduce image resolution
 3. Use fewer steps (4 is usually enough)
 
+## Requirements
+
+- **Python 3.8+**
+- **Modal account** (free tier available)
+- **A100-40GB GPU access** (may require billing)
+- **~20GB storage** for models
+
+### Python Dependencies
+See `requirements.txt` for the complete list:
+```bash
+modal>=1.2.0
+```
+
 ## Configuration
 
 You can modify these settings in `qwen.py`:
@@ -123,12 +162,6 @@ You can modify these settings in `qwen.py`:
 - **GPU**: Change `gpu="A100-40GB"` to other available GPUs
 - **Timeout**: Adjust `timeout=3200` for longer/shorter sessions
 - **Container lifetime**: Modify `scaledown_window=300`
-
-## Requirements
-
-- Modal account (free tier available)
-- A100-40GB GPU access (may require billing)
-- ~20GB storage for models
 
 ## License
 
